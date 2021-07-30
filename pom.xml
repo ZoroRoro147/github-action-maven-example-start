@@ -72,11 +72,32 @@
 						<configuration>
 							<sources>
 								<source>gen/src</source>
-							</sources
+							</sources>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+		
+		  <plugin>
+    <artifactId>maven-clean-plugin</artifactId>
+    <version>3.1.0</version>
+    <configuration>
+      <filesets>
+        <fileset>
+          <directory>some/relative/path</directory>
+          <includes>
+            <include>**/*.tmp</include>
+            <include>**/*.log</include>
+          </includes>
+          <excludes>
+            <exclude>**/important.log</exclude>
+            <exclude>**/another-important.log</exclude>
+          </excludes>
+          <followSymlinks>false</followSymlinks>
+        </fileset>
+      </filesets>
+    </configuration>
+  </plugin>
         </plugins>
     </build>
 
